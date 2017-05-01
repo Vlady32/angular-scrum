@@ -1,0 +1,848 @@
+form-auth .authorization-form,
+form-register .registration-form {
+  font-family: "Special1";
+  margin-top: 130px;
+  padding-bottom: 70px;
+}
+form-auth .authorization-form .alert,
+form-register .registration-form .alert {
+  border-radius: 0;
+}
+form-auth .authorization-form input,
+form-register .registration-form input {
+  font-size: 18px;
+  height: 44px;
+  border-radius: 0;
+  border-color: #a5a5a6;
+}
+form-auth .authorization-form .btn,
+form-register .registration-form .btn {
+  background-color: #199ab6;
+  color: white;
+}
+form-auth .authorization-form .btn:hover,
+form-register .registration-form .btn:hover {
+  background-color: #1FB6D7;
+}
+
+@font-face {
+  font-family: 'Special1';
+  src: url('fonts/SpecialFont1.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Special2';
+  src: url('fonts/SpecialFont2.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Special3';
+  src: url('fonts/SpecialFont3.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Font4';
+  src: url('fonts/HelveticaNeueCyr-Roman.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Font5';
+  src: url('fonts/HelveticaNeueCyr-Light.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+.css-form input.ng-invalid.ng-touched {
+  background-color: #FA787E;
+}
+.container-fluid {
+  max-width: 1400px;
+}
+body {
+  font-family: 'Font4';
+}
+.clearfix {
+  clear: both;
+}
+
+.project {
+  position: absolute;
+  left: 70px;
+  width: 94.8%;
+  min-height: 100%;
+  height: auto;
+  background-color: #F5F5F5;
+}
+.project .project-header {
+  padding: 20px 0 0 0;
+  overflow: hidden;
+}
+.project .project-header .projectName {
+  padding-top: 2px;
+  float: left;
+  width: 19%;
+  font-size: 26px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.project .project-header .projectName p {
+  text-align: center;
+}
+.project .project-header .projectSearch {
+  float: left;
+  width: 60%;
+}
+.project .project-header .projectSearch input {
+  height: 40px;
+}
+.project .project-header .projectButton {
+  float: left;
+  width: 20%;
+}
+.project .project-header .projectButton .buttonSprint {
+  margin: 0 auto;
+  width: 90%;
+}
+.project .project-header .projectButton .buttonSprint button {
+  height: 40px;
+  text-transform: uppercase;
+}
+.project .projectSprints {
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  overflow: auto;
+}
+.project .projectSprints h2 {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #d4d5d8;
+  padding-bottom: 10px;
+}
+.project .projectSprints .sprint {
+  width: 350px;
+  height: 100px;
+  background-color: #fff;
+  border: 1px solid #D4D5D8;
+  border-radius: 5px;
+  margin: 10px auto;
+  cursor: pointer;
+}
+.project .projectSprints .sprint .sprintName {
+  float: left;
+  width: 55%;
+  margin-right: 5%;
+  padding: 5px 0 10px 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  text-align: left;
+}
+.project .projectSprints .sprint .sprintDate {
+  font-weight: bold;
+  width: 28%;
+  float: right;
+  padding: 5px 10px 10px 0;
+}
+.project .projectSprints .sprint .sprintOptions {
+  width: 10%;
+  float: right;
+  padding: 5px 10px 10px 0;
+}
+.project .projectSprints .sprint .sprintOptions i:hover {
+  color: #9DA8AE;
+}
+.project .projectSprints .sprint .sprintDescription {
+  clear: both;
+  width: 100%;
+  text-align: left;
+  padding: 0 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.project .projectSprints .activeSprints {
+  float: left;
+  width: 50%;
+}
+.project .projectSprints .finishedSprints {
+  float: left;
+  width: 50%;
+}
+#modalBacklog .modal-header h3 {
+  margin-top: 0;
+}
+#modalBacklog .modal-body {
+  width: 100%;
+}
+#modalBacklog .modal-body .priority {
+  float: left;
+  width: 32%;
+  text-align: center;
+  margin-left: 10px;
+}
+#modalBacklog .modal-body .header {
+  font-size: 18px;
+}
+#modalBacklog .modal-body .item {
+  width: 100%;
+  height: 90px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+#modalBacklog .modal-body .item:hover {
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+}
+#modalBacklog .modal-body .item .itemName {
+  text-align: left;
+  font-weight: bold;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  float: left;
+}
+#modalBacklog .modal-body .item .itemRemove,
+#modalBacklog .modal-body .item .itemEdit {
+  float: right;
+  margin-right: 5px;
+}
+#modalBacklog .modal-body .item .itemRemove i:hover,
+#modalBacklog .modal-body .item .itemEdit i:hover {
+  color: #9DA8AE;
+}
+#modalBacklog .modal-body .item .itemDescription {
+  text-align: left;
+  margin-left: 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  clear: both;
+}
+#modalBacklog .modal-body .lowPriority .item {
+  background-color: #DFF0D8;
+  border: 1px solid #cfedc2;
+}
+#modalBacklog .modal-body .lowPriority .item:hover {
+  border: 1px solid #9ece8a;
+}
+#modalBacklog .modal-body .middlePriority .item {
+  background-color: #FCF8E3;
+  border: 1px solid #f9eca9;
+}
+#modalBacklog .modal-body .middlePriority .item:hover {
+  border: 1px solid #d6c371;
+}
+#modalBacklog .modal-body .highPriority .item {
+  background-color: #F2DEDE;
+  border: 1px solid #efb8b8;
+}
+#modalBacklog .modal-body .highPriority .item:hover {
+  border: 1px solid #d69595;
+}
+#modalBacklog .modal-footer {
+  clear: both;
+}
+#modalBacklog .modal-footer form {
+  text-align: left;
+}
+
+.main {
+  font-family: "Font4";
+}
+.main .projects {
+  position: absolute;
+  left: 70px;
+  width: 94.9%;
+  min-height: 100%;
+  height: auto;
+  background-color: #F5F5F5;
+}
+.main .projects .header {
+  padding: 20px 0 0 0;
+  overflow: hidden;
+}
+.main .projects .header .search {
+  float: left;
+  width: 85%;
+  margin: 0 auto;
+}
+.main .projects .header .search form {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 17px;
+}
+.main .projects .header .search form input {
+  height: 40px;
+}
+.main .projects .header .add {
+  float: left;
+  width: 15%;
+}
+.main .projects .header .add .button {
+  width: 80%;
+  margin: 0 auto;
+}
+.main .projects .header .add .button button {
+  height: 40px;
+  text-transform: uppercase;
+}
+.main .projects .projects-table {
+  clear: both;
+  margin-top: 40px;
+  font-size: 18px;
+}
+.main .projects .projects-table .error {
+  width: 90%;
+  margin: 0 auto;
+}
+.main .projects .projects-table table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  width: 80%;
+  background-color: #fff;
+}
+.main .projects .projects-table table .min {
+  width: 5%;
+}
+.main .projects .projects-table table .middle {
+  width: 25%;
+}
+.main .projects .projects-table table .max {
+  width: 40%;
+}
+.main .projects .projects-table table tr:hover {
+  background-color: #F8FAFF;
+}
+.main .projects .projects-table table th {
+  font-family: "Font5";
+  font-weight: normal;
+  color: #838891;
+}
+.main .projects .projects-table table td,
+.main .projects .projects-table table th {
+  color: #686F7A;
+  text-align: center;
+  border: 1px solid #E9EAEB;
+  padding: 6px;
+}
+.main .projects .projects-table table td .link,
+.main .projects .projects-table table th .link {
+  color: #4894BE;
+  text-decoration: underline;
+}
+.main .projects .projects-table table .additionalSection th {
+  border: none;
+}
+.main .projects .projects-table table .additionalSection .thcolspan {
+  text-align: left;
+  font-size: 16px;
+}
+.main .projects .projects-table table .additionalSection .thcolspan span {
+  bottom: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+.main .projects .projects-table table .additionalSection.ng-hide-remove {
+  transition: all 0.5s ease;
+}
+.main .projects .projects-table table .additionalSection.ng-hide {
+  opacity: 0;
+}
+
+scrum-bottom {
+  font-family: 'Special1';
+}
+scrum-bottom .copyright {
+  float: left;
+  font-size: 18px;
+  margin-top: 13px;
+}
+scrum-bottom .socials {
+  float: right;
+  margin-top: 8px;
+}
+scrum-bottom .socials i {
+  background: #199ab6;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 25px;
+  text-align: center;
+  margin-right: 10px;
+  padding-top: 6%;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 5px;
+}
+scrum-bottom .socials i:hover {
+  opacity: .7;
+}
+
+scrum-header {
+  font-family: 'Special1';
+}
+scrum-header .container {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+scrum-header .logo {
+  margin-top: -14px;
+  width: 160px;
+}
+scrum-header .buttons button {
+  width: 100px;
+  height: 40px;
+  border-radius: 0;
+  font-size: 15px;
+}
+scrum-header .buttons a {
+  text-decoration: none;
+}
+scrum-header .buttons .login button {
+  border-color: #199ab6;
+}
+scrum-header .buttons .login button:hover {
+  background-color: #fbfbfb;
+}
+scrum-header .buttons .login {
+  color: #199ab6;
+}
+scrum-header .buttons .sign button {
+  background-color: #199ab6;
+  color: white;
+}
+scrum-header .buttons .sign button:hover {
+  background-color: #1fb6d7;
+}
+
+scrum-nav li {
+  list-style-type: none;
+}
+scrum-nav .menu {
+  background-color: #1B3446;
+  width: 70px;
+  height: 100%;
+  position: fixed;
+  z-index: 9999999;
+}
+scrum-nav .menu a {
+  color: #9da8ae;
+  text-decoration: none;
+}
+scrum-nav .menu a:hover {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+scrum-nav .menu .extended_logo {
+  height: 69px;
+  background-color: #162B3A;
+  position: fixed;
+  left: 70px;
+  text-align: center;
+}
+scrum-nav .menu .extended_logo.ng-hide-remove {
+  transition: all 0.5s ease;
+}
+scrum-nav .menu .extended_logo.ng-hide {
+  opacity: 0;
+}
+scrum-nav .menu .extended_logo p {
+  display: inline-block;
+}
+scrum-nav .menu .extended_logo .item {
+  color: #9da8ae;
+  margin-left: 10px;
+  padding-top: 2px;
+  padding-right: 10px;
+}
+scrum-nav .menu .extended_logo .item:hover {
+  color: white;
+  cursor: pointer;
+}
+scrum-nav .menu .extended_logo .user_email {
+  position: relative;
+  bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 18px;
+  color: white;
+}
+scrum-nav .menu .menu-items {
+  text-align: center;
+}
+scrum-nav .menu .menu-items .item {
+  color: #9da8ae;
+  margin-top: 10px;
+}
+scrum-nav .menu .menu-items .item:hover {
+  color: white;
+  cursor: pointer;
+}
+scrum-nav .menu .menu-items .item .activeItem {
+  color: white;
+}
+scrum-nav .menu .menu-items .logo {
+  background-color: #162B3A;
+  border-bottom: 2px solid #224357;
+}
+scrum-nav .menu .menu-items .logo:hover {
+  cursor: pointer;
+}
+scrum-nav .menu .menu-items .logo img {
+  width: 60px;
+}
+
+.main .settings {
+  position: absolute;
+  left: 70px;
+  width: 94.9%;
+  min-height: 100%;
+  height: auto;
+  background-color: #F5F5F5;
+}
+.main .settings p {
+  text-align: center;
+  margin-top: 250px;
+  font-size: 40px;
+  color: grey;
+}
+
+.sprint-scrum {
+  position: absolute;
+  left: 70px;
+  width: 94.8%;
+  min-height: 100%;
+  height: auto;
+  background-color: #F5F5F5;
+}
+.sprint-scrum .on-drag-enter-hover {
+  border: 2px dashed #D4D5D8;
+  border-radius: 5px;
+}
+.sprint-scrum .headerSprint {
+  padding: 20px 0 0 0;
+}
+.sprint-scrum .headerSprint .sprintName {
+  padding-top: 2px;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-right: 15px;
+  float: left;
+  width: 18%;
+  font-size: 26px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.sprint-scrum .headerSprint .sprintName p {
+  text-align: center;
+}
+.sprint-scrum .headerSprint .sprintSearch {
+  float: left;
+  width: 60%;
+}
+.sprint-scrum .headerSprint .sprintSearch input {
+  height: 40px;
+  margin: 0 auto;
+}
+.sprint-scrum .headerSprint .sprintButton {
+  float: left;
+  width: 20%;
+}
+.sprint-scrum .headerSprint .sprintButton .buttonSprint {
+  margin: 0 auto;
+  width: 80%;
+}
+.sprint-scrum .headerSprint .sprintButton .buttonSprint button {
+  height: 40px;
+  text-transform: uppercase;
+}
+.sprint-scrum .items {
+  padding-top: 10px;
+  clear: both;
+  width: 100%;
+}
+.sprint-scrum .items .stageSprint {
+  float: left;
+  width: 30%;
+  text-align: center;
+  margin-left: 3%;
+}
+.sprint-scrum .items .stageSprint .droppable {
+  min-height: 100px;
+}
+.sprint-scrum .items .stageSprint .item {
+  width: 300px;
+  height: 100px;
+  background-color: #fff;
+  border: 1px solid #D4D5D8;
+  border-radius: 5px;
+  margin: 10px auto;
+  cursor: move;
+}
+.sprint-scrum .items .stageSprint .item .lowPriority {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: #00C851;
+}
+.sprint-scrum .items .stageSprint .item .middlePriority {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: #FFBB33;
+}
+.sprint-scrum .items .stageSprint .item .highPriority {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: #FF4444;
+}
+.sprint-scrum .items .stageSprint .item .body-item {
+  height: 100px;
+}
+.sprint-scrum .items .stageSprint .item .itemName {
+  float: left;
+  width: 80%;
+  padding: 5px 0 10px 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  text-align: left;
+}
+.sprint-scrum .items .stageSprint .item .itemPriority {
+  width: 15%;
+  float: right;
+  padding: 7px 0 10px 0;
+}
+.sprint-scrum .items .stageSprint .item .itemDescription {
+  clear: both;
+  width: 100%;
+  text-align: left;
+  padding: 0 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sprint-scrum .items .stageSprint .item .item-menu {
+  display: none;
+  position: relative;
+  height: 100px;
+  width: 30px;
+  left: 298px;
+  bottom: 101px;
+  background-color: #fafafa;
+  border: 1px solid #D4D5D8;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.sprint-scrum .items .stageSprint .item .item-menu .show {
+  display: block;
+}
+.sprint-scrum .items .stageSprint .item .item-menu .hide {
+  display: none;
+}
+.sprint-scrum .items .stageSprint .item .item-menu i {
+  display: block;
+  margin-top: 15px;
+}
+.sprint-scrum .items .stageSprint .item .item-menu i.fa-folder-o {
+  color: #00C851;
+}
+.sprint-scrum .items .stageSprint .item .item-menu i.fa-folder-o:hover {
+  color: #007E33;
+}
+.sprint-scrum .items .stageSprint .item .item-menu i.fa-pencil-square-o {
+  color: #33B5E5;
+  padding-left: 3px;
+}
+.sprint-scrum .items .stageSprint .item .item-menu i.fa-pencil-square-o:hover {
+  color: #0099CC;
+}
+.sprint-scrum .items .stageSprint .item .item-menu i.fa-times {
+  color: #FF4444;
+}
+.sprint-scrum .items .stageSprint .item .item-menu i.fa-times:hover {
+  color: #CC0000;
+}
+.sprint-scrum .items .stageSprint .item .item-menu i:first-child {
+  margin-top: 10px;
+  padding: 3px;
+}
+.sprint-scrum .items .todo h3 {
+  padding-bottom: 5px;
+  border-bottom: 3px solid #00C851;
+}
+.sprint-scrum .items .doing h3 {
+  padding-bottom: 5px;
+  border-bottom: 3px solid #FFBB33;
+}
+.sprint-scrum .items .done h3 {
+  padding-bottom: 5px;
+  border-bottom: 3px solid #FF4444;
+}
+.sprint-scrum .backlog {
+  clear: both;
+  padding-top: 20px;
+}
+.sprint-scrum .backlog .backlog-header {
+  border-bottom: 1px solid #D4D5D8;
+  overflow: hidden;
+}
+.sprint-scrum .backlog h2 {
+  float: left;
+  padding-left: 30px;
+}
+.sprint-scrum .backlog form {
+  width: 150px;
+  float: left;
+  margin-left: 25px;
+  margin-top: 22px;
+}
+.sprint-scrum .backlog .items {
+  width: 99%;
+  margin-left: 0.5%;
+  min-height: 100px;
+  overflow: hidden;
+}
+.sprint-scrum .backlog .items .item {
+  float: left;
+  width: 300px;
+  height: 100px;
+  background-color: #fff;
+  border: 1px solid #D4D5D8;
+  border-radius: 5px;
+  margin: 10px auto;
+  cursor: move;
+  margin-left: 60px;
+}
+.sprint-scrum .backlog .items .item .lowPriority {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: #00C851;
+}
+.sprint-scrum .backlog .items .item .middlePriority {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: #FFBB33;
+}
+.sprint-scrum .backlog .items .item .highPriority {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: #FF4444;
+}
+.sprint-scrum .backlog .items .item .body-item {
+  height: 100px;
+}
+.sprint-scrum .backlog .items .item .itemName {
+  float: left;
+  width: 80%;
+  padding: 5px 0 10px 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  text-align: left;
+}
+.sprint-scrum .backlog .items .item .itemPriority {
+  width: 15%;
+  float: right;
+  padding: 7px 0 10px 0;
+}
+.sprint-scrum .backlog .items .item .itemDescription {
+  clear: both;
+  width: 100%;
+  text-align: left;
+  padding: 0 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sprint-scrum .backlog .items .item .item-menu {
+  display: none;
+  position: relative;
+  height: 100px;
+  width: 30px;
+  left: 298px;
+  bottom: 101px;
+  background-color: #fafafa;
+  border: 1px solid #D4D5D8;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.sprint-scrum .backlog .items .item .item-menu .show {
+  display: block;
+}
+.sprint-scrum .backlog .items .item .item-menu .hide {
+  display: none;
+}
+.sprint-scrum .backlog .items .item .item-menu i {
+  display: block;
+  margin-top: 15px;
+}
+.sprint-scrum .backlog .items .item .item-menu i.fa-folder-o {
+  color: #00C851;
+}
+.sprint-scrum .backlog .items .item .item-menu i.fa-folder-o:hover {
+  color: #007E33;
+}
+.sprint-scrum .backlog .items .item .item-menu i.fa-pencil-square-o {
+  color: #33B5E5;
+  padding-left: 3px;
+}
+.sprint-scrum .backlog .items .item .item-menu i.fa-pencil-square-o:hover {
+  color: #0099CC;
+}
+.sprint-scrum .backlog .items .item .item-menu i.fa-times {
+  color: #FF4444;
+}
+.sprint-scrum .backlog .items .item .item-menu i.fa-times:hover {
+  color: #CC0000;
+}
+.sprint-scrum .backlog .items .item .item-menu i:first-child {
+  margin-top: 10px;
+  padding: 3px;
+}
+.sprint-scrum .backlog .items .item .itemPriority {
+  padding-left: 23px;
+}
+.sprint-scrum .backlog .items .item .item-menu i.fa-folder-o {
+  padding-left: 5px;
+}
+.sprint-scrum .backlog .items .item .item-menu i.fa-pencil-square-o {
+  padding-left: 6px;
+}
+.sprint-scrum .backlog .items .item .item-menu i.fa-times {
+  padding-left: 6px;
+}
+#modalAddItem form div {
+  margin-top: 5px;
+}

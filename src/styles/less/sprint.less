@@ -1,0 +1,282 @@
+.sprint-scrum {
+  position: absolute;
+  left: 70px;
+  width: 94.8%;
+  min-height: 100%;
+  height: auto;
+  background-color: #F5F5F5;
+
+  .on-drag-enter-hover{
+    border: 2px dashed #D4D5D8;
+    border-radius: 5px;
+  }
+
+  .headerSprint{
+    padding: 20px 0 0 0;
+
+    .sprintName{
+      padding-top:2px;
+      margin-right:5px;
+      margin-left:5px;
+      padding-right:15px;
+      float: left;
+      width: 18%;
+      font-size: 26px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      p{
+        text-align: center;
+      }
+    }
+
+    .sprintSearch{
+      float: left;
+      width: 60%;
+
+      input{
+        height: 40px;
+        margin: 0 auto;
+      }
+    }
+
+    .sprintButton{
+      float: left;
+      width: 20%;
+
+      .buttonSprint{
+        margin: 0 auto;
+        width: 80%;
+
+        button{
+          height: 40px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  .items{
+    padding-top:10px;
+    clear: both;
+    width: 100%;
+
+    .stageSprint{
+      float: left;
+      width: 30%;
+      text-align: center;
+      margin-left: 3%;
+
+      .droppable{
+        min-height: 100px;
+      }
+
+      .item{
+        width: 300px;
+        height: 100px;
+        background-color: #fff;
+        border: 1px solid #D4D5D8;
+        border-radius: 5px;
+        margin: 10px auto;
+        cursor: move;
+
+        .circlePriority(@color){
+          position: absolute;
+          width: 15px;
+          height: 15px;
+          border-radius: 10px;
+          background-color: @color;
+        }
+
+        .lowPriority{
+          .circlePriority(#00C851);
+        }
+
+        .middlePriority{
+          .circlePriority(#FFBB33);
+        }
+
+        .highPriority{
+          .circlePriority(#FF4444);
+        }
+
+        .body-item{
+          height: 100px;
+        }
+
+        .itemName{
+          float: left;
+          width: 80%;
+          padding:5px 0 10px 10px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          font-weight: bold;
+          text-align: left;
+        }
+
+        .itemPriority{
+          width: 15%;
+          float: right;
+          padding:7px 0 10px 0;
+        }
+
+        .itemDescription{
+          clear: both;
+          width: 100%;
+          text-align: left;
+          padding:0 10px;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .item-menu{
+          display: none;
+          position: relative;
+          height: 100px;
+          width: 30px;
+          left: 298px;
+          bottom: 101px;
+          background-color: #fafafa;
+          border: 1px solid #D4D5D8;
+          border-radius: 5px;
+          cursor: pointer;
+
+          .show{
+            display: block;
+          }
+
+          .hide{
+            display: none;
+          }
+
+          i{
+            display: block;
+            margin-top:15px;
+
+            &.fa-folder-o{
+              color: #00C851;
+
+              &:hover{
+                color: #007E33;
+              }
+            }
+
+            &.fa-pencil-square-o{
+              color: #33B5E5;
+              padding-left:3px;
+
+              &:hover{
+                color: #0099CC;
+              }
+            }
+
+            &.fa-times{
+              color: #FF4444;
+
+              &:hover{
+                color: #CC0000;
+              }
+            }
+
+            &:first-child{
+              margin-top: 10px;
+              padding:3px;
+            }
+
+          }
+        }
+
+      }
+
+    }
+
+    .sprintFunction(@color){
+      padding-bottom: 5px;
+      border-bottom: 3px solid @color;
+    }
+
+    .todo h3{
+      .sprintFunction(#00C851);
+    }
+
+    .doing h3{
+      .sprintFunction(#FFBB33);
+    }
+
+    .done h3{
+      .sprintFunction(#FF4444);
+    }
+
+  }
+
+  .backlog{
+    clear: both;
+    padding-top:20px;
+
+    .backlog-header{
+      border-bottom: 1px solid #D4D5D8;
+      overflow: hidden;
+    }
+
+    h2{
+      float: left;
+      padding-left:30px;
+      //padding-bottom:10px;
+    }
+
+    form{
+      width: 150px;
+      float: left;
+      margin-left:25px;
+      margin-top:22px;
+    }
+
+    .items{
+      width: 99%;
+      margin-left:0.5%;
+      min-height: 100px;
+      overflow: hidden;
+
+      .item{
+        float: left;
+        .items .stageSprint .item;
+        margin-left:60px;
+
+        .itemPriority{
+          padding-left: 23px;
+        }
+
+        .item-menu{
+          i{
+
+            &.fa-folder-o{
+              padding-left:5px;
+            }
+
+            &.fa-pencil-square-o{
+              padding-left:6px;
+            }
+
+            &.fa-times{
+              padding-left:6px;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+
+#modalAddItem{
+
+  form div{
+    margin-top:5px;
+  }
+
+}

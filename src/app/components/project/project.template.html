@@ -1,0 +1,192 @@
+<div class="main">
+  <scrum-nav></scrum-nav>
+  <div class="project">
+    <div class="project-header">
+      <div class="projectName">
+        <p title="{{$ctrl.project.name}}">{{$ctrl.project.name}}</p>
+      </div>
+      <div class="projectSearch">
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search" ng-model="$ctrl.query">
+          </div>
+        </form>
+      </div>
+      <div class="projectButton">
+        <div class="buttonSprint">
+          <button class="btn btn-primary" data-toggle="modal" data-target="#modalSprint">+ Add sprint</button>
+          <button class="btn btn-primary" ng-click="$ctrl.getItemsBacklog()" data-toggle="modal" data-target="#modalBacklog">Backlog</button>
+        </div>
+      </div>
+    </div>
+    <div class="projectSprints">
+      <div class="activeSprints">
+        <h2>Active sprints</h2>
+        <div class="sprint" ng-dblclick="$ctrl.redirectToSprint(sprint._id)" ng-repeat="sprint in $ctrl.sprints | filter:$ctrl.query | filter: {isFinished:false}">
+          <div class="sprintName" title="{{sprint.name}}">{{sprint.name}}</div>
+          <div class="sprintOptions"><i class="fa fa-cog" aria-hidden="true" data-toggle="modal" data-target="#modalEditSprint" ng ng-click="$ctrl.setSprintForEdit(sprint)"></i></div>
+          <div class="sprintDate">{{sprint.finishDate | date: 'dd-MM-yyyy'}}</div>
+          <div class="sprintDescription" title="{{sprint.description}}">{{sprint.description}}</div>
+        </div>
+      </div>
+      <div class="finishedSprints">
+        <h2>Complete sprints</h2>
+        <div class="sprint" ng-dblclick="$ctrl.redirectToSprint(sprint._id)" ng-repeat="sprint in $ctrl.sprints | filter:$ctrl.query | filter: {isFinished:true}">
+          <div class="sprintName" title="{{sprint.name}}">{{sprint.name}}</div>
+          <div class="sprintOptions"><i data-toggle="modal" data-target="#modalEditSprint" ng-click="$ctrl.setSprintForEdit(sprint)" class="fa fa-cog" aria-hidden="true"></i></div>
+          <div class="sprintDate">{{sprint.finishDate | date: 'dd-MM-yyyy'}}</div>
+          <div class="sprintDescription" title="{{sprint.description}}">{{sprint.description}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modalSprint">
+    <div class="modal-dialog modal-sm modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+          <h3 class="center-block">Add sprint</h3>
+        </div>
+        <div class="modal-body">
+          <form name="sprintForm">
+            <div class="form-group">
+              <div>
+                <input type="text" class="form-control" id="sprintName" placeholder="Name of sprint" ng-model="$ctrl.sprintName" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <textarea placeholder="Description" class="form-control" id="sprintDescription" cols="30" rows="8" ng-model="$ctrl.sprintDescription"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <label for="sprintFinishDate">Expire day of sprint</label>
+                <input type="date" min="{{$ctrl.now}}" class="form-control" id="sprintFinishDate" placeholder="Expiry date of sprint" ng-model="$ctrl.sprintFinishDate" required>
+              </div>
+            </div>
+            <div class="">
+              <div ng-show="$ctrl.errorForm" class="alert alert-danger">{{$ctrl.errorForm}}</div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" type="button" ng-click="$ctrl.addSprint()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modalEditSprint">
+    <div class="modal-dialog modal-sm modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+          <h3 class="center-block">Edit sprint</h3>
+        </div>
+        <div class="modal-body">
+          <form name="sprintForm">
+            <div class="form-group">
+              <div>
+                <label for="sprintEditName">Name of sprint</label>
+                <input type="text" class="form-control" id="sprintEditName" placeholder="Name of sprint" ng-model="$ctrl.chosenSprint.name" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <label for="sprintEditDescription">Description of sprint</label>
+                <textarea placeholder="Description" class="form-control" id="sprintEditDescription" cols="10" rows="5" ng-model="$ctrl.chosenSprint.description"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <label for="sprintFinishDate">Expire day of sprint</label>
+                <input type="date"  min="{{$ctrl.now}}" class="form-control" id="sprintEditFinishDate" placeholder="Expiry date of sprint" ng-model="$ctrl.chosenSprint.finishDate" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <label for="sprintIsFinished">Finished sprint?</label>
+                <select class="form-control" id="sprintIsFinished" ng-model="$ctrl.chosenSprint.isFinished" ng-options="opt for opt in $ctrl.chosenSprint.arrayOptions">
+                </select>
+              </div>
+            </div>
+            <div class="">
+              <div ng-show="$ctrl.errorForm" class="alert alert-danger">{{$ctrl.errorForm}}</div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+          <button class="btn btn-danger" type="button" ng-click="$ctrl.removeSprint()">Remove</button>
+          <button class="btn btn-info" type="button" ng-click="$ctrl.editSprint()">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modalBacklog">
+    <div class="modal-dialog modal-sm modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" ng-click="$ctrl.clearItem()" data-dismiss="modal"><i class="fa fa-close"></i></button>
+          <h3 class="center-block">Backlog</h3>
+        </div>
+        <div class="modal-body">
+          <div class="lowPriority priority">
+            <div class="alert alert-success header">
+              <strong>Low priority</strong>
+            </div>
+            <div class="item" ng-click="$ctrl.setItemForEdit(item)" title="{{item.description}}" ng-repeat="item in $ctrl.items | filter: {priority: 1}">
+              <div class="itemName">{{item.name}}</div>
+              <div class="itemRemove"><i class="fa fa-times" aria-hidden="true" ng-click="$ctrl.removeItem(item._id)"></i></div>
+              <div class="itemDescription">{{item.description}}</div>
+            </div>
+          </div>
+          <div class="middlePriority priority">
+            <div class="alert alert-warning header">
+              <strong>Middle priority</strong>
+            </div>
+            <div class="item" ng-click="$ctrl.setItemForEdit(item)" title="{{item.description}}" ng-repeat="item in $ctrl.items | filter: {priority: 2}">
+              <div class="itemName">{{item.name}}</div>
+              <div class="itemRemove"><i class="fa fa-times" aria-hidden="true" ng-click="$ctrl.removeItem(item._id)"></i></div>
+              <div class="itemDescription">{{item.description}}</div>
+            </div>
+          </div>
+          <div class="highPriority priority">
+            <div class="alert alert-danger header">
+              <strong>High priority</strong>
+            </div>
+            <div class="item" ng-click="$ctrl.setItemForEdit(item)" title="{{item.description}}" ng-repeat="item in $ctrl.items | filter: {priority: 3}">
+              <div class="itemName">{{item.name}}</div>
+              <div class="itemRemove"><i class="fa fa-times" aria-hidden="true" ng-click="$ctrl.removeItem(item._id)"></i></div>
+              <div class="itemDescription">{{item.description}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <form name="itemForm">
+            <div>
+              <label for="sprintEditName">Name of item*</label>
+              <input type="text" class="form-control" id="itemName" placeholder="Name of item" ng-model="$ctrl.item.name" required>
+            </div>
+            <div>
+              <label for="itemDescription">Description of item</label>
+              <textarea placeholder="Description" class="form-control" id="itemDescription" cols="5" rows="5" ng-model="$ctrl.item.description"></textarea>
+            </div>
+            <div>
+              <label class="radio-inline"><input type="radio" name="itemPriority" ng-model="$ctrl.item.priority" value="1">Low priority</label>
+              <label class="radio-inline"><input type="radio" name="itemPriority" ng-model="$ctrl.item.priority" value="2">Middle priority</label>
+              <label class="radio-inline"><input type="radio" name="itemPriority" ng-model="$ctrl.item.priority" value="3">High priority</label>
+            </div>
+            <div class="">
+              <div ng-show="$ctrl.errorFormBacklog" class="alert alert-danger">{{$ctrl.errorFormBacklog}}</div>
+            </div>
+          </form>
+          <button class="btn btn-default" type="button" ng-click="$ctrl.clearItem()" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" ng-show="$ctrl.isEdit" type="button" ng-click="$ctrl.editItem()">Save</button>
+          <button class="btn btn-primary" ng-show="!$ctrl.isEdit" ng-disabled="itemForm.$error.required" type="button" ng-click="$ctrl.addItem()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

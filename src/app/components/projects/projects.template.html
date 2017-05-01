@@ -1,0 +1,79 @@
+<div class="main">
+  <scrum-nav></scrum-nav>
+  <div class="projects">
+    <div class="header">
+      <div class="search">
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search" ng-model="$ctrl.query">
+          </div>
+        </form>
+      </div>
+      <div class="add">
+        <div class="button">
+          <button class="btn btn-primary" data-toggle="modal" data-target="#modalProject">+ Add project</button>
+        </div>
+      </div>
+    </div>
+    <div class="projects-table">
+      <div class="error">
+        <div ng-show="$ctrl.error" class="alert alert-danger">{{$ctrl.error}}</div>
+      </div>
+      <table ng-show="$ctrl.isShowTable">
+        <thead ng-show="$ctrl.isShowAdditSection" class="additionalSection">
+          <tr>
+            <th class="min"><label><input type="checkbox" ng-model="$ctrl.selectAll" ng-click="$ctrl.toggleSelectAll()"></label></th>
+            <th class="thcolspan" colspan="4"><span ng-click="$ctrl.remove()"><i class="fa fa-times" aria-hidden="true" style="color: red"></i> remove</span></th>
+          </tr>
+        </thead>
+        <thead ng-show="!$ctrl.isShowAdditSection">
+          <tr>
+            <th class="min"><label><input type="checkbox" ng-model="$ctrl.selectAll" ng-click="$ctrl.toggleSelectAll()"></label></th>
+            <th class="min">No.</th>
+            <th class="middle">Name of project</th>
+            <th class="middle">Date of creation</th>
+            <th class="max">Description</th>
+          </tr>
+        </thead>
+        <tr ng-repeat="project in $ctrl.projects | filter:$ctrl.query">
+          <td class="min"><label><input type="checkbox" ng-click="$ctrl.toggleSelect()" ng-model="project.select"></label></td>
+          <td class="min">{{$index+1}}</td>
+          <td class="middle"><a class="link" href="#!/projects/{{project._id}}">{{project.name}}</a></td>
+          <td class="middle">{{project.creationDate | date: 'short'}}</td>
+          <td class="max">{{project.description}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="modal fade" id="modalProject">
+    <div class="modal-dialog modal-sm modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+          <h3 class="center-block">Add project</h3>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <div>
+                <input type="text" class="form-control" id="projectName" placeholder="Name of project" ng-model="$ctrl.name" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <textarea placeholder="Description" class="form-control" id="projectDescription" cols="30" rows="10" ng-model="$ctrl.description"></textarea>
+              </div>
+            </div>
+            <div class="">
+              <div ng-show="$ctrl.errorForm" class="alert alert-danger">{{$ctrl.errorForm}}</div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" type="button" ng-click="$ctrl.addProject()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

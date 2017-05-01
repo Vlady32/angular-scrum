@@ -1,0 +1,231 @@
+<div class="main">
+  <scrum-nav></scrum-nav>
+  <div class="sprint-scrum">
+    <div class="headerSprint">
+      <div class="sprintName">
+        <p title="{{$ctrl.sprint.name}}">{{$ctrl.sprint.name}}</p>
+      </div>
+      <div class="sprintSearch">
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search" ng-model="$ctrl.query">
+          </div>
+        </form>
+      </div>
+      <div class="sprintButton">
+        <div class="buttonSprint">
+          <button class="btn btn-primary" data-toggle="modal" data-target="#modalAddItem">+ Add item</button>
+        </div>
+      </div>
+    </div>
+    <div class="items">
+      <div class="todo stageSprint">
+        <h3>TODO</h3>
+        <div class="droppable" ui-on-drop="$ctrl.onDropToDo($data)" drag-enter-class="on-drag-enter-hover" drag-hover-class="on-drag-enter-hover">
+          <div class="item" ui-draggable="true" drag="item" ng-mouseleave="itemMenu = -1" ng-mouseover="itemMenu = $index" ng-init="itemMenu = -1" ng-repeat="item in $ctrl.items | filter:$ctrl.query | filter: {isBacklog:false} | filter: {status:1}">
+            <div class="body-item">
+              <div class="itemName">{{item.name}}</div>
+              <div class="itemPriority"><span title="Low priority" ng-class={'lowPriority':item.priority==1,'middlePriority':item.priority==2,'highPriority':item.priority==3}></span></div>
+              <div class="itemDescription">{{item.description}}</div>
+            </div>
+            <div class="item-menu" ng-class="itemMenu == $index ? 'show' : 'hide'">
+              <i class="fa fa-folder-o fa-lg" aria-hidden="true" data-toggle="modal" data-target="#showItemModal" ng-click="$ctrl.setItem(item)" title="Open item"></i>
+              <i class="fa fa-pencil-square-o fa-lg" ng-click="$ctrl.setItem(item)" data-toggle="modal" data-target="#modalEditItem" aria-hidden="true" title="Edit item"></i>
+              <i class="fa fa-times fa-lg" aria-hidden="true" ng-click="$ctrl.removeItem(item._id)" title="Remove item"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="doing stageSprint">
+        <h3>DOING</h3>
+        <div class="droppable" ui-on-drop="$ctrl.onDropToDoing($data)" drag-enter-class="on-drag-enter-hover" drag-hover-class="on-drag-enter-hover">
+          <div class="item" ui-draggable="true" drag="item" ng-mouseleave="itemMenu = -1" ng-mouseover="itemMenu = $index" ng-init="itemMenu = -1" ng-repeat="item in $ctrl.items | filter:$ctrl.query | filter: {isBacklog:false} | filter: {status:2}">
+            <div class="body-item">
+              <div class="itemName">{{item.name}}</div>
+              <div class="itemPriority"><span title="Low priority" ng-class={'lowPriority':item.priority==1,'middlePriority':item.priority==2,'highPriority':item.priority==3}></span></div>
+              <div class="itemDescription">{{item.description}}</div>
+            </div>
+            <div class="item-menu" ng-class="itemMenu == $index ? 'show' : 'hide'">
+              <i class="fa fa-folder-o fa-lg" aria-hidden="true" data-toggle="modal" data-target="#showItemModal" ng-click="$ctrl.setItem(item)" title="Open item"></i>
+              <i class="fa fa-pencil-square-o fa-lg" ng-click="$ctrl.setItem(item)" data-toggle="modal" data-target="#modalEditItem" aria-hidden="true" title="Edit item"></i>
+              <i class="fa fa-times fa-lg" aria-hidden="true" ng-click="$ctrl.removeItem(item._id)" title="Remove item"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="done stageSprint">
+        <h3>DONE</h3>
+        <div class="droppable" ui-on-drop="$ctrl.onDropToDone($data)" drag-enter-class="on-drag-enter-hover" drag-hover-class="on-drag-enter-hover">
+          <div class="item" ui-draggable="true" drag="item" ng-mouseleave="itemMenu = -1" ng-mouseover="itemMenu = $index" ng-init="itemMenu = -1" ng-repeat="item in $ctrl.items | filter:$ctrl.query | filter: {isBacklog:false} | filter: {status:3}">
+            <div class="body-item">
+              <div class="itemName">{{item.name}}</div>
+              <div class="itemPriority"><span title="Low priority" ng-class={'lowPriority':item.priority==1,'middlePriority':item.priority==2,'highPriority':item.priority==3}></span></div>
+              <div class="itemDescription">{{item.description}}</div>
+            </div>
+            <div class="item-menu" ng-class="itemMenu == $index ? 'show' : 'hide'">
+              <i class="fa fa-folder-o fa-lg" aria-hidden="true" data-toggle="modal" data-target="#showItemModal" ng-click="$ctrl.setItem(item)" title="Open item"></i>
+              <i class="fa fa-pencil-square-o fa-lg" ng-click="$ctrl.setItem(item)" data-toggle="modal" data-target="#modalEditItem" aria-hidden="true" title="Edit item"></i>
+              <i class="fa fa-times fa-lg" aria-hidden="true" ng-click="$ctrl.removeItem(item._id)" title="Remove item"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="backlog">
+      <div class="backlog-header">
+        <h2>Backlog</h2>
+        <form class="form-inline">
+          <select id="sortSelect" class="form-control" title="Sort by" ng-model="$ctrl.orderBy">
+            <option value="">By date</option>
+            <option value="priority">By priority</option>
+          </select>
+        </form>
+      </div>
+      <div class="items" ui-on-drop="$ctrl.onDropBacklog($data)" drag-enter-class="on-drag-enter-hover" drag-hover-class="on-drag-enter-hover">
+        <div class="item" ui-draggable="true" drag="item" ng-mouseleave="itemMenu = -1" ng-mouseover="itemMenu = $index" ng-init="itemMenu = -1" ng-repeat="item in $ctrl.items | filter:$ctrl.query | filter: {isBacklog:true} | orderBy: $ctrl.orderBy">
+          <div class="body-item">
+            <div class="itemName">{{item.name}}</div>
+            <div class="itemPriority"><span title="Low priority" ng-class={'lowPriority':item.priority==1,'middlePriority':item.priority==2,'highPriority':item.priority==3}></span></div>
+            <div class="itemDescription">{{item.description}}</div>
+          </div>
+          <div class="item-menu" ng-class="itemMenu == $index ? 'show' : 'hide'">
+            <i class="fa fa-folder-o fa-lg" aria-hidden="true" data-toggle="modal" data-target="#showItemModal" ng-click="$ctrl.setItem(item)" title="Open item"></i>
+            <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" ng-click="$ctrl.setItem(item)" data-toggle="modal" data-target="#modalEditItem" title="Edit item"></i>
+            <i class="fa fa-times fa-lg" aria-hidden="true" ng-click="$ctrl.removeItem(item._id)" title="Remove item"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ng-show="$ctrl.error" class="alert alert-danger">{{$ctrl.error}}</div>
+  </div>
+  <div class="modal fade" id="modalAddItem">
+    <div class="modal-dialog modal-sm modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+          <h3 class="center-block">Add item</h3>
+        </div>
+        <div class="modal-body">
+          <form name="itemAddForm">
+            <div>
+              <label for="itemName">Name*</label>
+              <input type="text" class="form-control" id="itemName" placeholder="Name" ng-model="$ctrl.item.name" required>
+            </div>
+            <div>
+              <label for="itemDescription">Description</label>
+              <textarea placeholder="Description" class="form-control" id="itemDescription" cols="5" rows="5" ng-model="$ctrl.item.description"></textarea>
+            </div>
+            <div>
+              <label for="statusItem">Priority</label><br>
+              <label class="radio-inline"><input id="statusItem" type="radio" name="itemStatus" ng-model="$ctrl.item.priority" value="1">Low priority</label>
+              <label class="radio-inline"><input type="radio" name="itemStatus" ng-model="$ctrl.item.priority" value="2">Middle priority</label>
+              <label class="radio-inline"><input type="radio" name="itemStatus" ng-model="$ctrl.item.priority" value="3">High priority</label>
+            </div>
+            <div>
+              <label for="stageItem">Stage</label><br>
+              <label class="radio-inline"><input id="stageItem" type="radio" name="stageItem" ng-model="$ctrl.item.stage" value="0">Backlog</label>
+              <label class="radio-inline"><input type="radio" name="stageItem" ng-model="$ctrl.item.stage" value="1">To do</label>
+              <label class="radio-inline"><input type="radio" name="stageItem" ng-model="$ctrl.item.stage" value="2">Doing</label>
+              <label class="radio-inline"><input type="radio" name="stageItem" ng-model="$ctrl.item.stage" value="3">Done</label>
+            </div>
+            <div>
+              <label for="itemPoints">Story points</label>
+              <input type="number" min="0" class="form-control" id="itemPoints" placeholder="Story points" ng-model="$ctrl.item.storyPoints">
+            </div>
+            <div class="">
+              <div ng-show="$ctrl.errorFormAdd" class="alert alert-danger">{{$ctrl.errorFormAdd}}</div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" type="button" ng-disabled="itemAddForm.$error.required" ng-click="$ctrl.addItem()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="showItemModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">{{$ctrl.chosenItem.name}}</h4>
+        </div>
+        <div class="modal-body">
+          <div class="description">
+            <div>
+              <label for="showItemDescription">Description</label>
+              <p id="showItemDescription">{{$ctrl.chosenItem.description}}</p>
+            </div>
+            <div>
+              <label for="showItemCreationDate">Date of creation item: </label>
+              <p id="showItemCreationDate">{{$ctrl.chosenItem.creationDate | date: 'dd-MM-yyyy hh:mm'}}</p>
+            </div>
+            <div>
+              <label for="showItemPriority">Priority: </label>
+              <span id="showItemPriority">{{$ctrl.chosenItem.priorityItem}}</span>
+            </div>
+            <div>
+              <label for="showItemStage">Stage: </label>
+              <span id="showItemStage">{{$ctrl.chosenItem.statusItem}}</span>
+            </div>
+            <div>
+              <label for="showItemStoryPoints">Story points: </label>
+              <span id="showItemStoryPoints">{{$ctrl.chosenItem.storyPoints}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modalEditItem">
+    <div class="modal-dialog modal-sm modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="close" type="button" data-dismiss="modal"><i class="fa fa-close"></i></button>
+          <h3 class="center-block">Edit item</h3>
+        </div>
+        <div class="modal-body">
+          <form name="itemEditForm">
+            <div>
+              <label for="itemEditName">Name*</label>
+              <input type="text" class="form-control" id="itemEditName" placeholder="Name" ng-model="$ctrl.chosenItem.name" required>
+            </div>
+            <div>
+              <label for="itemEditDescription">Description</label>
+              <textarea placeholder="Description" class="form-control" id="itemEditDescription" cols="5" rows="5" ng-model="$ctrl.chosenItem.description"></textarea>
+            </div>
+            <div>
+              <label for="statusEditItem">Priority</label><br>
+              <label class="radio-inline"><input id="statusEditItem" type="radio" name="itemStatus" ng-model="$ctrl.chosenItem.priority" value="1">Low priority</label>
+              <label class="radio-inline"><input type="radio" name="itemStatus" ng-model="$ctrl.chosenItem.priority" value="2">Middle priority</label>
+              <label class="radio-inline"><input type="radio" name="itemStatus" ng-model="$ctrl.chosenItem.priority" value="3">High priority</label>
+            </div>
+            <div>
+              <label for="stageEditItem">Stage</label><br>
+              <label class="radio-inline"><input id="stageEditItem" type="radio" name="stageItem" ng-model="$ctrl.chosenItem.status" value="0">Backlog</label>
+              <label class="radio-inline"><input type="radio" name="stageItem" ng-model="$ctrl.chosenItem.status" value="1">To do</label>
+              <label class="radio-inline"><input type="radio" name="stageItem" ng-model="$ctrl.chosenItem.status" value="2">Doing</label>
+              <label class="radio-inline"><input type="radio" name="stageItem" ng-model="$ctrl.chosenItem.status" value="3">Done</label>
+            </div>
+            <div>
+              <label for="itemEditPoints">Story points</label>
+              <input type="number" min="0" class="form-control" id="itemEditPoints" placeholder="Story points" ng-model="$ctrl.chosenItem.storyPoints">
+            </div>
+            <div class="">
+              <div ng-show="$ctrl.errorFormEdit" class="alert alert-danger">{{$ctrl.errorFormEdit}}</div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+          <button class="btn btn-primary" type="button" ng-disabled="itemEditForm.$error.required" ng-click="$ctrl.editChosenItem()">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

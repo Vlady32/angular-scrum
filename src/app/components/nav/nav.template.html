@@ -1,0 +1,12 @@
+<div class="menu">
+  <div ng-show="$ctrl.isExtendedLogo" class="extended_logo">
+    <p class="user_email">{{$ctrl.email}}</p>
+    <p class="item"><a href="#!/settings"><i class="fa fa-pencil fa-3x" aria-hidden="true"></i><br>Profile</a></p>
+    <p class="item" ng-click="$ctrl.logout()"><i class="fa fa-sign-out fa-3x" aria-hidden="true"></i><br>Log out</p>
+  </div>
+  <ul class="menu-items">
+    <li class="logo" ng-click="$ctrl.toggleExtendedLogo()"><img src="img/logo2.png" alt="Logo"></li>
+    <li class="item"><a ng-class="$ctrl.isProjectsItem ? 'activeItem' : ''" href="#!/projects"><i class="fa fa-align-justify fa-3x" aria-hidden="true"></i>Projects</a></li>
+    <li class="item"><a ng-class="$ctrl.isSettingsItem ? 'activeItem' : ''" href="#!/settings"><i class="fa fa-align-justify fa-3x" aria-hidden="true"></i>Settings</a></li>
+  </ul>
+</div>

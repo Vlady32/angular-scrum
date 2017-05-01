@@ -1,0 +1,103 @@
+scrum-nav{
+
+  li{
+    list-style-type: none;
+  }
+
+  .menu{
+    background-color: #1B3446;
+    width:70px;
+    height: 100%;
+    position: fixed;
+    z-index: 9999999;
+
+    a{
+      color: #9da8ae;
+      text-decoration: none;
+
+      &:hover{
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
+
+    .extended_logo{
+      height: 69px;
+      background-color: #162B3A;
+      position: fixed;
+
+      left:70px;
+      text-align: center;
+
+      &.ng-hide-remove {
+        transition: all 0.5s ease;
+      }
+
+      &.ng-hide{
+        opacity: 0;
+      }
+
+      p{
+        display: inline-block;
+      }
+
+      .item{
+        color: #9da8ae;
+        margin-left:10px;
+        padding-top:2px;
+        padding-right:10px;
+
+        &:hover{
+          color: white;
+          cursor: pointer;
+        }
+
+      }
+      .user_email{
+        position: relative;
+        bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 18px;
+        color: white;
+      }
+
+    }
+
+    .menu-items{
+      text-align: center;
+
+      .item{
+        color: #9da8ae;
+        margin-top:10px;
+
+        &:hover{
+          color: white;
+          cursor: pointer;
+        }
+
+        .activeItem{
+          color: white;
+        }
+
+      }
+
+      .logo{
+        background-color: #162B3A;
+        border-bottom: 2px solid #224357;
+
+        &:hover{
+          cursor: pointer;
+        }
+
+        img{
+          width: 60px;
+        }
+      }
+
+    }
+
+  }
+
+}

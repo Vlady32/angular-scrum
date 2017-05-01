@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="scrum">
+<head>
+	<meta charset="UTF-8">
+	<title>Scrum</title>
+  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <!-- build:css styles/vendor.css -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
+	<!-- endbower -->
+  <!-- endbuild -->
+  <link rel="stylesheet" href="styles/site.css">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div ui-view></div>
+  
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-native-dragdrop/draganddrop.js"></script>
+  <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+  
+  <!-- build:js scripts/main.js -->
+  <!-- inject:js -->
+  <script src="app/services/services.module.js"></script>
+  <script src="app/services/sprints/sprints.service.js"></script>
+  <script src="app/services/registration/registration.service.js"></script>
+  <script src="app/services/projects/projects.service.js"></script>
+  <script src="app/services/backlog/itemsService.js"></script>
+  <script src="app/services/authorization/authorization.service.js"></script>
+  <script src="app/directives/directives.module.js"></script>
+  <script src="app/directives/header/header.directive.js"></script>
+  <script src="app/directives/bottom/bottom.directive.js"></script>
+  <script src="app/configs/configs.module.js"></script>
+  <script src="app/configs/requestInterceptor/requestInterceptor.config.js"></script>
+  <script src="app/components/components.module.js"></script>
+  <script src="app/components/sprint/sprint.component.js"></script>
+  <script src="app/components/settings/settings.component.js"></script>
+  <script src="app/components/registration/registration.component.js"></script>
+  <script src="app/components/projects/projects.component.js"></script>
+  <script src="app/components/project/project.component.js"></script>
+  <script src="app/components/nav/nav.component.js"></script>
+  <script src="app/components/authorization/authorization.component.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/app.config.js"></script>
+  <!-- endinject -->
+  <!-- endbuild -->
+</body>
+</html>
